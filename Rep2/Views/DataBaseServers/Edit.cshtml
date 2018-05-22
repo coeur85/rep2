@@ -1,0 +1,38 @@
+﻿@model Rep2.Models.EntityModel.DataBaseServer
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout/_MainMaster.cshtml";
+    ViewBag.formMode = "edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card">
+        <div class="card-body">
+
+            @Html.EditorForModel()
+
+        </div>
+
+        <div class="card-footer">
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-2">
+                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-danger" })
+                </div>
+                <div class="col-md-offset-2 col-md-2">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+

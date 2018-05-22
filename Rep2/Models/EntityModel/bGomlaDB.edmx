@@ -1,0 +1,1086 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="bGomlaDBreportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccessAccounts">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccessAccountsTypes">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Articals">
+          <Key>
+            <PropertyRef Name="ArticallD" />
+          </Key>
+          <Property Name="ArticallD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PublicationID" Type="int" Nullable="false" />
+          <Property Name="ArticalName" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Fillters" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="BackupLogs">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SrvBkId" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="FilePath" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateCreated" Type="smalldatetime" Nullable="false" />
+          <Property Name="FileSize" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="FileExists" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BackupTypes">
+          <Key>
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="typeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FilesExtintion" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Branches">
+          <Key>
+            <PropertyRef Name="BranchID" />
+          </Key>
+          <Property Name="BranchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BranchTypes">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataBaseFiles">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileNameID" Type="int" Nullable="false" />
+          <Property Name="DbServerID" Type="int" Nullable="false" />
+          <Property Name="FilePath" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataBaseFilesNames">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataBaseFilesSizes">
+          <Key>
+            <PropertyRef Name="SizeID" />
+          </Key>
+          <Property Name="SizeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileID" Type="int" Nullable="false" />
+          <Property Name="Size" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="DateTaken" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataBaseServers">
+          <Key>
+            <PropertyRef Name="ServerID" />
+          </Key>
+          <Property Name="ServerID" Type="int" Nullable="false" />
+          <Property Name="DataBaseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DataBasePartionFreeSpace" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="BranchID" Type="int" Nullable="false" />
+          <Property Name="DataBaseAccountID" Type="int" Nullable="false" />
+          <Property Name="NetworkAccountID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Distributers">
+          <Key>
+            <PropertyRef Name="DistributerID" />
+          </Key>
+          <Property Name="DistributerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServerID" Type="int" Nullable="false" />
+          <Property Name="PublicationID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Machines">
+          <Key>
+            <PropertyRef Name="MachineID" />
+          </Key>
+          <Property Name="MachineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MachineName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MachineIP" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publications">
+          <Key>
+            <PropertyRef Name="PublicationID" />
+          </Key>
+          <Property Name="PublicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PublicationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BranchTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServerBackups">
+          <Key>
+            <PropertyRef Name="SrvBkID" />
+          </Key>
+          <Property Name="SrvBkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DbServerID" Type="int" Nullable="false" />
+          <Property Name="BackupTypeID" Type="int" Nullable="false" />
+          <Property Name="intervalMin" Type="int" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subscripers">
+          <Key>
+            <PropertyRef Name="DistributerID" />
+            <PropertyRef Name="SubscriberServerID" />
+          </Key>
+          <Property Name="DistributerID" Type="int" Nullable="false" />
+          <Property Name="SubscriberServerID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AccessAccounts_AccessAccountsTypes">
+          <End Role="AccessAccountsTypes" Type="Self.AccessAccountsTypes" Multiplicity="1" />
+          <End Role="AccessAccounts" Type="Self.AccessAccounts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessAccountsTypes">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="AccessAccounts">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articals_Publications">
+          <End Role="Publications" Type="Self.Publications" Multiplicity="1" />
+          <End Role="Articals" Type="Self.Articals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publications">
+              <PropertyRef Name="PublicationID" />
+            </Principal>
+            <Dependent Role="Articals">
+              <PropertyRef Name="PublicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BackupLogs_ServerBackups">
+          <End Role="ServerBackups" Type="Self.ServerBackups" Multiplicity="1" />
+          <End Role="BackupLogs" Type="Self.BackupLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServerBackups">
+              <PropertyRef Name="SrvBkID" />
+            </Principal>
+            <Dependent Role="BackupLogs">
+              <PropertyRef Name="SrvBkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branches_BranchTypes">
+          <End Role="BranchTypes" Type="Self.BranchTypes" Multiplicity="1" />
+          <End Role="Branches" Type="Self.Branches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BranchTypes">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Branches">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseFiles_DataBaseFilesNames">
+          <End Role="DataBaseFilesNames" Type="Self.DataBaseFilesNames" Multiplicity="1" />
+          <End Role="DataBaseFiles" Type="Self.DataBaseFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataBaseFilesNames">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="DataBaseFiles">
+              <PropertyRef Name="FileNameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseFiles_DataBaseServers">
+          <End Role="DataBaseServers" Type="Self.DataBaseServers" Multiplicity="1" />
+          <End Role="DataBaseFiles" Type="Self.DataBaseFiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataBaseServers">
+              <PropertyRef Name="ServerID" />
+            </Principal>
+            <Dependent Role="DataBaseFiles">
+              <PropertyRef Name="DbServerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseFilesSizes_DataBaseFiles">
+          <End Role="DataBaseFiles" Type="Self.DataBaseFiles" Multiplicity="1" />
+          <End Role="DataBaseFilesSizes" Type="Self.DataBaseFilesSizes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataBaseFiles">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="DataBaseFilesSizes">
+              <PropertyRef Name="FileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseServers_AccessAccounts">
+          <End Role="AccessAccounts" Type="Self.AccessAccounts" Multiplicity="1" />
+          <End Role="DataBaseServers" Type="Self.DataBaseServers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessAccounts">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="DataBaseServers">
+              <PropertyRef Name="DataBaseAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseServers_AccessAccounts1">
+          <End Role="AccessAccounts" Type="Self.AccessAccounts" Multiplicity="1" />
+          <End Role="DataBaseServers" Type="Self.DataBaseServers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessAccounts">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="DataBaseServers">
+              <PropertyRef Name="NetworkAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseServers_Branches">
+          <End Role="Branches" Type="Self.Branches" Multiplicity="1" />
+          <End Role="DataBaseServers" Type="Self.DataBaseServers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="BranchID" />
+            </Principal>
+            <Dependent Role="DataBaseServers">
+              <PropertyRef Name="BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseServers_Machines">
+          <End Role="Machines" Type="Self.Machines" Multiplicity="1" />
+          <End Role="DataBaseServers" Type="Self.DataBaseServers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Machines">
+              <PropertyRef Name="MachineID" />
+            </Principal>
+            <Dependent Role="DataBaseServers">
+              <PropertyRef Name="ServerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributers_DataBaseServers">
+          <End Role="DataBaseServers" Type="Self.DataBaseServers" Multiplicity="1" />
+          <End Role="Distributers" Type="Self.Distributers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataBaseServers">
+              <PropertyRef Name="ServerID" />
+            </Principal>
+            <Dependent Role="Distributers">
+              <PropertyRef Name="ServerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributers_Publications">
+          <End Role="Publications" Type="Self.Publications" Multiplicity="1" />
+          <End Role="Distributers" Type="Self.Distributers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publications">
+              <PropertyRef Name="PublicationID" />
+            </Principal>
+            <Dependent Role="Distributers">
+              <PropertyRef Name="PublicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Publications_BranchTypes">
+          <End Role="BranchTypes" Type="Self.BranchTypes" Multiplicity="1" />
+          <End Role="Publications" Type="Self.Publications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BranchTypes">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Publications">
+              <PropertyRef Name="BranchTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServerBackups_BackupTypes">
+          <End Role="BackupTypes" Type="Self.BackupTypes" Multiplicity="1" />
+          <End Role="ServerBackups" Type="Self.ServerBackups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BackupTypes">
+              <PropertyRef Name="typeID" />
+            </Principal>
+            <Dependent Role="ServerBackups">
+              <PropertyRef Name="BackupTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServerBackups_DataBaseServers">
+          <End Role="DataBaseServers" Type="Self.DataBaseServers" Multiplicity="1" />
+          <End Role="ServerBackups" Type="Self.ServerBackups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataBaseServers">
+              <PropertyRef Name="ServerID" />
+            </Principal>
+            <Dependent Role="ServerBackups">
+              <PropertyRef Name="DbServerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscripers_DataBaseServers">
+          <End Role="DataBaseServers" Type="Self.DataBaseServers" Multiplicity="1" />
+          <End Role="Subscripers" Type="Self.Subscripers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataBaseServers">
+              <PropertyRef Name="ServerID" />
+            </Principal>
+            <Dependent Role="Subscripers">
+              <PropertyRef Name="SubscriberServerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscripers_Distributers">
+          <End Role="Distributers" Type="Self.Distributers" Multiplicity="1" />
+          <End Role="Subscripers" Type="Self.Subscripers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributers">
+              <PropertyRef Name="DistributerID" />
+            </Principal>
+            <Dependent Role="Subscripers">
+              <PropertyRef Name="DistributerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bGomlaDBreportModelStoreContainer">
+          <EntitySet Name="AccessAccounts" EntityType="Self.AccessAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccessAccountsTypes" EntityType="Self.AccessAccountsTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Articals" EntityType="Self.Articals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BackupLogs" EntityType="Self.BackupLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BackupTypes" EntityType="Self.BackupTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BranchTypes" EntityType="Self.BranchTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataBaseFiles" EntityType="Self.DataBaseFiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataBaseFilesNames" EntityType="Self.DataBaseFilesNames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataBaseFilesSizes" EntityType="Self.DataBaseFilesSizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataBaseServers" EntityType="Self.DataBaseServers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distributers" EntityType="Self.Distributers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Machines" EntityType="Self.Machines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publications" EntityType="Self.Publications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServerBackups" EntityType="Self.ServerBackups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscripers" EntityType="Self.Subscripers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AccessAccounts_AccessAccountsTypes" Association="Self.FK_AccessAccounts_AccessAccountsTypes">
+            <End Role="AccessAccountsTypes" EntitySet="AccessAccountsTypes" />
+            <End Role="AccessAccounts" EntitySet="AccessAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articals_Publications" Association="Self.FK_Articals_Publications">
+            <End Role="Publications" EntitySet="Publications" />
+            <End Role="Articals" EntitySet="Articals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BackupLogs_ServerBackups" Association="Self.FK_BackupLogs_ServerBackups">
+            <End Role="ServerBackups" EntitySet="ServerBackups" />
+            <End Role="BackupLogs" EntitySet="BackupLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branches_BranchTypes" Association="Self.FK_Branches_BranchTypes">
+            <End Role="BranchTypes" EntitySet="BranchTypes" />
+            <End Role="Branches" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseFiles_DataBaseFilesNames" Association="Self.FK_DataBaseFiles_DataBaseFilesNames">
+            <End Role="DataBaseFilesNames" EntitySet="DataBaseFilesNames" />
+            <End Role="DataBaseFiles" EntitySet="DataBaseFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseFiles_DataBaseServers" Association="Self.FK_DataBaseFiles_DataBaseServers">
+            <End Role="DataBaseServers" EntitySet="DataBaseServers" />
+            <End Role="DataBaseFiles" EntitySet="DataBaseFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseFilesSizes_DataBaseFiles" Association="Self.FK_DataBaseFilesSizes_DataBaseFiles">
+            <End Role="DataBaseFiles" EntitySet="DataBaseFiles" />
+            <End Role="DataBaseFilesSizes" EntitySet="DataBaseFilesSizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseServers_AccessAccounts" Association="Self.FK_DataBaseServers_AccessAccounts">
+            <End Role="AccessAccounts" EntitySet="AccessAccounts" />
+            <End Role="DataBaseServers" EntitySet="DataBaseServers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseServers_AccessAccounts1" Association="Self.FK_DataBaseServers_AccessAccounts1">
+            <End Role="AccessAccounts" EntitySet="AccessAccounts" />
+            <End Role="DataBaseServers" EntitySet="DataBaseServers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseServers_Branches" Association="Self.FK_DataBaseServers_Branches">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="DataBaseServers" EntitySet="DataBaseServers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseServers_Machines" Association="Self.FK_DataBaseServers_Machines">
+            <End Role="Machines" EntitySet="Machines" />
+            <End Role="DataBaseServers" EntitySet="DataBaseServers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributers_DataBaseServers" Association="Self.FK_Distributers_DataBaseServers">
+            <End Role="DataBaseServers" EntitySet="DataBaseServers" />
+            <End Role="Distributers" EntitySet="Distributers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributers_Publications" Association="Self.FK_Distributers_Publications">
+            <End Role="Publications" EntitySet="Publications" />
+            <End Role="Distributers" EntitySet="Distributers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Publications_BranchTypes" Association="Self.FK_Publications_BranchTypes">
+            <End Role="BranchTypes" EntitySet="BranchTypes" />
+            <End Role="Publications" EntitySet="Publications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServerBackups_BackupTypes" Association="Self.FK_ServerBackups_BackupTypes">
+            <End Role="BackupTypes" EntitySet="BackupTypes" />
+            <End Role="ServerBackups" EntitySet="ServerBackups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServerBackups_DataBaseServers" Association="Self.FK_ServerBackups_DataBaseServers">
+            <End Role="DataBaseServers" EntitySet="DataBaseServers" />
+            <End Role="ServerBackups" EntitySet="ServerBackups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscripers_DataBaseServers" Association="Self.FK_Subscripers_DataBaseServers">
+            <End Role="DataBaseServers" EntitySet="DataBaseServers" />
+            <End Role="Subscripers" EntitySet="Subscripers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscripers_Distributers" Association="Self.FK_Subscripers_Distributers">
+            <End Role="Distributers" EntitySet="Distributers" />
+            <End Role="Subscripers" EntitySet="Subscripers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bGomlaDBreportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="bGomlaDBreportEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AccessAccounts" EntityType="bGomlaDBreportModel.AccessAccount" />
+          <EntitySet Name="AccessAccountsTypes" EntityType="bGomlaDBreportModel.AccessAccountsType" />
+          <EntitySet Name="Articals" EntityType="bGomlaDBreportModel.Artical" />
+          <EntitySet Name="BackupLogs" EntityType="bGomlaDBreportModel.BackupLog" />
+          <EntitySet Name="BackupTypes" EntityType="bGomlaDBreportModel.BackupType" />
+          <EntitySet Name="Branches" EntityType="bGomlaDBreportModel.Branch" />
+          <EntitySet Name="BranchTypes" EntityType="bGomlaDBreportModel.BranchType" />
+          <EntitySet Name="DataBaseFiles" EntityType="bGomlaDBreportModel.DataBaseFile" />
+          <EntitySet Name="DataBaseFilesNames" EntityType="bGomlaDBreportModel.DataBaseFilesName" />
+          <EntitySet Name="DataBaseFilesSizes" EntityType="bGomlaDBreportModel.DataBaseFilesSize" />
+          <EntitySet Name="DataBaseServers" EntityType="bGomlaDBreportModel.DataBaseServer" />
+          <EntitySet Name="Distributers" EntityType="bGomlaDBreportModel.Distributer" />
+          <EntitySet Name="Machines" EntityType="bGomlaDBreportModel.Machine" />
+          <EntitySet Name="Publications" EntityType="bGomlaDBreportModel.Publication" />
+          <EntitySet Name="ServerBackups" EntityType="bGomlaDBreportModel.ServerBackup" />
+          <AssociationSet Name="FK_AccessAccounts_AccessAccountsTypes" Association="bGomlaDBreportModel.FK_AccessAccounts_AccessAccountsTypes">
+            <End Role="AccessAccountsType" EntitySet="AccessAccountsTypes" />
+            <End Role="AccessAccount" EntitySet="AccessAccounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseServers_AccessAccounts" Association="bGomlaDBreportModel.FK_DataBaseServers_AccessAccounts">
+            <End Role="AccessAccount" EntitySet="AccessAccounts" />
+            <End Role="DataBaseServer" EntitySet="DataBaseServers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseServers_AccessAccounts1" Association="bGomlaDBreportModel.FK_DataBaseServers_AccessAccounts1">
+            <End Role="AccessAccount" EntitySet="AccessAccounts" />
+            <End Role="DataBaseServer" EntitySet="DataBaseServers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articals_Publications" Association="bGomlaDBreportModel.FK_Articals_Publications">
+            <End Role="Publication" EntitySet="Publications" />
+            <End Role="Artical" EntitySet="Articals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BackupLogs_ServerBackups" Association="bGomlaDBreportModel.FK_BackupLogs_ServerBackups">
+            <End Role="ServerBackup" EntitySet="ServerBackups" />
+            <End Role="BackupLog" EntitySet="BackupLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServerBackups_BackupTypes" Association="bGomlaDBreportModel.FK_ServerBackups_BackupTypes">
+            <End Role="BackupType" EntitySet="BackupTypes" />
+            <End Role="ServerBackup" EntitySet="ServerBackups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Branches_BranchTypes" Association="bGomlaDBreportModel.FK_Branches_BranchTypes">
+            <End Role="BranchType" EntitySet="BranchTypes" />
+            <End Role="Branch" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseServers_Branches" Association="bGomlaDBreportModel.FK_DataBaseServers_Branches">
+            <End Role="Branch" EntitySet="Branches" />
+            <End Role="DataBaseServer" EntitySet="DataBaseServers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Publications_BranchTypes" Association="bGomlaDBreportModel.FK_Publications_BranchTypes">
+            <End Role="BranchType" EntitySet="BranchTypes" />
+            <End Role="Publication" EntitySet="Publications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseFiles_DataBaseFilesNames" Association="bGomlaDBreportModel.FK_DataBaseFiles_DataBaseFilesNames">
+            <End Role="DataBaseFilesName" EntitySet="DataBaseFilesNames" />
+            <End Role="DataBaseFile" EntitySet="DataBaseFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseFiles_DataBaseServers" Association="bGomlaDBreportModel.FK_DataBaseFiles_DataBaseServers">
+            <End Role="DataBaseServer" EntitySet="DataBaseServers" />
+            <End Role="DataBaseFile" EntitySet="DataBaseFiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseFilesSizes_DataBaseFiles" Association="bGomlaDBreportModel.FK_DataBaseFilesSizes_DataBaseFiles">
+            <End Role="DataBaseFile" EntitySet="DataBaseFiles" />
+            <End Role="DataBaseFilesSize" EntitySet="DataBaseFilesSizes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataBaseServers_Machines" Association="bGomlaDBreportModel.FK_DataBaseServers_Machines">
+            <End Role="Machine" EntitySet="Machines" />
+            <End Role="DataBaseServer" EntitySet="DataBaseServers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributers_DataBaseServers" Association="bGomlaDBreportModel.FK_Distributers_DataBaseServers">
+            <End Role="DataBaseServer" EntitySet="DataBaseServers" />
+            <End Role="Distributer" EntitySet="Distributers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServerBackups_DataBaseServers" Association="bGomlaDBreportModel.FK_ServerBackups_DataBaseServers">
+            <End Role="DataBaseServer" EntitySet="DataBaseServers" />
+            <End Role="ServerBackup" EntitySet="ServerBackups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Distributers_Publications" Association="bGomlaDBreportModel.FK_Distributers_Publications">
+            <End Role="Publication" EntitySet="Publications" />
+            <End Role="Distributer" EntitySet="Distributers" />
+          </AssociationSet>
+          <AssociationSet Name="Subscripers" Association="bGomlaDBreportModel.Subscripers">
+            <End Role="DataBaseServer" EntitySet="DataBaseServers" />
+            <End Role="Distributer" EntitySet="Distributers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AccessAccount">
+          <Key>
+            <PropertyRef Name="AccountID" />
+          </Key>
+          <Property Name="AccountID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AccessAccountsType" Relationship="bGomlaDBreportModel.FK_AccessAccounts_AccessAccountsTypes" FromRole="AccessAccount" ToRole="AccessAccountsType" />
+          <NavigationProperty Name="DataBaseServers" Relationship="bGomlaDBreportModel.FK_DataBaseServers_AccessAccounts" FromRole="AccessAccount" ToRole="DataBaseServer" />
+          <NavigationProperty Name="NetworkAccountServers" Relationship="bGomlaDBreportModel.FK_DataBaseServers_AccessAccounts1" FromRole="AccessAccount" ToRole="DataBaseServer" />
+        </EntityType>
+        <EntityType Name="AccessAccountsType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AccessAccounts" Relationship="bGomlaDBreportModel.FK_AccessAccounts_AccessAccountsTypes" FromRole="AccessAccountsType" ToRole="AccessAccount" />
+        </EntityType>
+        <EntityType Name="Artical">
+          <Key>
+            <PropertyRef Name="ArticallD" />
+          </Key>
+          <Property Name="ArticallD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PublicationID" Type="Int32" Nullable="false" />
+          <Property Name="ArticalName" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Fillters" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="true" />
+          <NavigationProperty Name="Publication" Relationship="bGomlaDBreportModel.FK_Articals_Publications" FromRole="Artical" ToRole="Publication" />
+        </EntityType>
+        <EntityType Name="BackupLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SrvBkId" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FileSize" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="FileExists" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ServerBackup" Relationship="bGomlaDBreportModel.FK_BackupLogs_ServerBackups" FromRole="BackupLog" ToRole="ServerBackup" />
+        </EntityType>
+        <EntityType Name="BackupType">
+          <Key>
+            <PropertyRef Name="typeID" />
+          </Key>
+          <Property Name="typeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FilesExtintion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="ServerBackups" Relationship="bGomlaDBreportModel.FK_ServerBackups_BackupTypes" FromRole="BackupType" ToRole="ServerBackup" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="BranchID" />
+          </Key>
+          <Property Name="BranchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BranchName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BranchType" Relationship="bGomlaDBreportModel.FK_Branches_BranchTypes" FromRole="Branch" ToRole="BranchType" />
+          <NavigationProperty Name="DataBaseServers" Relationship="bGomlaDBreportModel.FK_DataBaseServers_Branches" FromRole="Branch" ToRole="DataBaseServer" />
+        </EntityType>
+        <EntityType Name="BranchType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Branches" Relationship="bGomlaDBreportModel.FK_Branches_BranchTypes" FromRole="BranchType" ToRole="Branch" />
+          <NavigationProperty Name="Publications" Relationship="bGomlaDBreportModel.FK_Publications_BranchTypes" FromRole="BranchType" ToRole="Publication" />
+        </EntityType>
+        <EntityType Name="DataBaseFile">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileNameID" Type="Int32" Nullable="false" />
+          <Property Name="DbServerID" Type="Int32" Nullable="false" />
+          <Property Name="FilePath" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DataBaseFilesName" Relationship="bGomlaDBreportModel.FK_DataBaseFiles_DataBaseFilesNames" FromRole="DataBaseFile" ToRole="DataBaseFilesName" />
+          <NavigationProperty Name="DataBaseServer" Relationship="bGomlaDBreportModel.FK_DataBaseFiles_DataBaseServers" FromRole="DataBaseFile" ToRole="DataBaseServer" />
+          <NavigationProperty Name="DataBaseFilesSizes" Relationship="bGomlaDBreportModel.FK_DataBaseFilesSizes_DataBaseFiles" FromRole="DataBaseFile" ToRole="DataBaseFilesSize" />
+        </EntityType>
+        <EntityType Name="DataBaseFilesName">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="FileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DataBaseFiles" Relationship="bGomlaDBreportModel.FK_DataBaseFiles_DataBaseFilesNames" FromRole="DataBaseFilesName" ToRole="DataBaseFile" />
+        </EntityType>
+        <EntityType Name="DataBaseFilesSize">
+          <Key>
+            <PropertyRef Name="SizeID" />
+          </Key>
+          <Property Name="SizeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileID" Type="Int32" Nullable="false" />
+          <Property Name="Size" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DateTaken" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="DataBaseFile" Relationship="bGomlaDBreportModel.FK_DataBaseFilesSizes_DataBaseFiles" FromRole="DataBaseFilesSize" ToRole="DataBaseFile" />
+        </EntityType>
+        <EntityType Name="DataBaseServer">
+          <Key>
+            <PropertyRef Name="ServerID" />
+          </Key>
+          <Property Name="ServerID" Type="Int32" Nullable="false" />
+          <Property Name="DataBaseName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataBasePartionFreeSpace" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="BranchID" Type="Int32" Nullable="false" />
+          <Property Name="DataBaseAccountID" Type="Int32" Nullable="false" />
+          <Property Name="NetworkAccountID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DBAccount" Relationship="bGomlaDBreportModel.FK_DataBaseServers_AccessAccounts" FromRole="DataBaseServer" ToRole="AccessAccount" />
+          <NavigationProperty Name="NetworkAccount" Relationship="bGomlaDBreportModel.FK_DataBaseServers_AccessAccounts1" FromRole="DataBaseServer" ToRole="AccessAccount" />
+          <NavigationProperty Name="Branch" Relationship="bGomlaDBreportModel.FK_DataBaseServers_Branches" FromRole="DataBaseServer" ToRole="Branch" />
+          <NavigationProperty Name="DataBaseFiles" Relationship="bGomlaDBreportModel.FK_DataBaseFiles_DataBaseServers" FromRole="DataBaseServer" ToRole="DataBaseFile" />
+          <NavigationProperty Name="Machine" Relationship="bGomlaDBreportModel.FK_DataBaseServers_Machines" FromRole="DataBaseServer" ToRole="Machine" />
+          <NavigationProperty Name="Distributers" Relationship="bGomlaDBreportModel.FK_Distributers_DataBaseServers" FromRole="DataBaseServer" ToRole="Distributer" />
+          <NavigationProperty Name="ServerBackups" Relationship="bGomlaDBreportModel.FK_ServerBackups_DataBaseServers" FromRole="DataBaseServer" ToRole="ServerBackup" />
+          <NavigationProperty Name="Subscribers" Relationship="bGomlaDBreportModel.Subscripers" FromRole="DataBaseServer" ToRole="Distributer" />
+        </EntityType>
+        <EntityType Name="Distributer">
+          <Key>
+            <PropertyRef Name="DistributerID" />
+          </Key>
+          <Property Name="DistributerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServerID" Type="Int32" Nullable="false" />
+          <Property Name="PublicationID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DistributerServer" Relationship="bGomlaDBreportModel.FK_Distributers_DataBaseServers" FromRole="Distributer" ToRole="DataBaseServer" />
+          <NavigationProperty Name="Publication" Relationship="bGomlaDBreportModel.FK_Distributers_Publications" FromRole="Distributer" ToRole="Publication" />
+          <NavigationProperty Name="Subscribers" Relationship="bGomlaDBreportModel.Subscripers" FromRole="Distributer" ToRole="DataBaseServer" />
+        </EntityType>
+        <EntityType Name="Machine">
+          <Key>
+            <PropertyRef Name="MachineID" />
+          </Key>
+          <Property Name="MachineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MachineName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MachineIP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DataBaseServer" Relationship="bGomlaDBreportModel.FK_DataBaseServers_Machines" FromRole="Machine" ToRole="DataBaseServer" />
+        </EntityType>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="PublicationID" />
+          </Key>
+          <Property Name="PublicationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PublicationName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BranchTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Articals" Relationship="bGomlaDBreportModel.FK_Articals_Publications" FromRole="Publication" ToRole="Artical" />
+          <NavigationProperty Name="BranchType" Relationship="bGomlaDBreportModel.FK_Publications_BranchTypes" FromRole="Publication" ToRole="BranchType" />
+          <NavigationProperty Name="Distributers" Relationship="bGomlaDBreportModel.FK_Distributers_Publications" FromRole="Publication" ToRole="Distributer" />
+        </EntityType>
+        <EntityType Name="ServerBackup">
+          <Key>
+            <PropertyRef Name="SrvBkID" />
+          </Key>
+          <Property Name="SrvBkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DbServerID" Type="Int32" Nullable="false" />
+          <Property Name="BackupTypeID" Type="Int32" Nullable="false" />
+          <Property Name="intervalMin" Type="Int32" Nullable="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BackupLogs" Relationship="bGomlaDBreportModel.FK_BackupLogs_ServerBackups" FromRole="ServerBackup" ToRole="BackupLog" />
+          <NavigationProperty Name="BackupType" Relationship="bGomlaDBreportModel.FK_ServerBackups_BackupTypes" FromRole="ServerBackup" ToRole="BackupType" />
+          <NavigationProperty Name="DataBaseServer" Relationship="bGomlaDBreportModel.FK_ServerBackups_DataBaseServers" FromRole="ServerBackup" ToRole="DataBaseServer" />
+        </EntityType>
+        <Association Name="FK_AccessAccounts_AccessAccountsTypes">
+          <End Type="bGomlaDBreportModel.AccessAccountsType" Role="AccessAccountsType" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.AccessAccount" Role="AccessAccount" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessAccountsType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="AccessAccount">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseServers_AccessAccounts">
+          <End Type="bGomlaDBreportModel.AccessAccount" Role="AccessAccount" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.DataBaseServer" Role="DataBaseServer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessAccount">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="DataBaseServer">
+              <PropertyRef Name="DataBaseAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseServers_AccessAccounts1">
+          <End Type="bGomlaDBreportModel.AccessAccount" Role="AccessAccount" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.DataBaseServer" Role="DataBaseServer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessAccount">
+              <PropertyRef Name="AccountID" />
+            </Principal>
+            <Dependent Role="DataBaseServer">
+              <PropertyRef Name="NetworkAccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Articals_Publications">
+          <End Type="bGomlaDBreportModel.Publication" Role="Publication" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.Artical" Role="Artical" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="PublicationID" />
+            </Principal>
+            <Dependent Role="Artical">
+              <PropertyRef Name="PublicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BackupLogs_ServerBackups">
+          <End Type="bGomlaDBreportModel.ServerBackup" Role="ServerBackup" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.BackupLog" Role="BackupLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServerBackup">
+              <PropertyRef Name="SrvBkID" />
+            </Principal>
+            <Dependent Role="BackupLog">
+              <PropertyRef Name="SrvBkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServerBackups_BackupTypes">
+          <End Type="bGomlaDBreportModel.BackupType" Role="BackupType" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.ServerBackup" Role="ServerBackup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BackupType">
+              <PropertyRef Name="typeID" />
+            </Principal>
+            <Dependent Role="ServerBackup">
+              <PropertyRef Name="BackupTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Branches_BranchTypes">
+          <End Type="bGomlaDBreportModel.BranchType" Role="BranchType" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.Branch" Role="Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BranchType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Branch">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseServers_Branches">
+          <End Type="bGomlaDBreportModel.Branch" Role="Branch" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.DataBaseServer" Role="DataBaseServer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="BranchID" />
+            </Principal>
+            <Dependent Role="DataBaseServer">
+              <PropertyRef Name="BranchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Publications_BranchTypes">
+          <End Type="bGomlaDBreportModel.BranchType" Role="BranchType" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.Publication" Role="Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BranchType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Publication">
+              <PropertyRef Name="BranchTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseFiles_DataBaseFilesNames">
+          <End Type="bGomlaDBreportModel.DataBaseFilesName" Role="DataBaseFilesName" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.DataBaseFile" Role="DataBaseFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataBaseFilesName">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="DataBaseFile">
+              <PropertyRef Name="FileNameID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseFiles_DataBaseServers">
+          <End Type="bGomlaDBreportModel.DataBaseServer" Role="DataBaseServer" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.DataBaseFile" Role="DataBaseFile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataBaseServer">
+              <PropertyRef Name="ServerID" />
+            </Principal>
+            <Dependent Role="DataBaseFile">
+              <PropertyRef Name="DbServerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseFilesSizes_DataBaseFiles">
+          <End Type="bGomlaDBreportModel.DataBaseFile" Role="DataBaseFile" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.DataBaseFilesSize" Role="DataBaseFilesSize" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataBaseFile">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="DataBaseFilesSize">
+              <PropertyRef Name="FileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataBaseServers_Machines">
+          <End Type="bGomlaDBreportModel.Machine" Role="Machine" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.DataBaseServer" Role="DataBaseServer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Machine">
+              <PropertyRef Name="MachineID" />
+            </Principal>
+            <Dependent Role="DataBaseServer">
+              <PropertyRef Name="ServerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributers_DataBaseServers">
+          <End Type="bGomlaDBreportModel.DataBaseServer" Role="DataBaseServer" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.Distributer" Role="Distributer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataBaseServer">
+              <PropertyRef Name="ServerID" />
+            </Principal>
+            <Dependent Role="Distributer">
+              <PropertyRef Name="ServerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServerBackups_DataBaseServers">
+          <End Type="bGomlaDBreportModel.DataBaseServer" Role="DataBaseServer" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.ServerBackup" Role="ServerBackup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DataBaseServer">
+              <PropertyRef Name="ServerID" />
+            </Principal>
+            <Dependent Role="ServerBackup">
+              <PropertyRef Name="DbServerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Distributers_Publications">
+          <End Type="bGomlaDBreportModel.Publication" Role="Publication" Multiplicity="1" />
+          <End Type="bGomlaDBreportModel.Distributer" Role="Distributer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publication">
+              <PropertyRef Name="PublicationID" />
+            </Principal>
+            <Dependent Role="Distributer">
+              <PropertyRef Name="PublicationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Subscripers">
+          <End Type="bGomlaDBreportModel.DataBaseServer" Role="DataBaseServer" Multiplicity="*" />
+          <End Type="bGomlaDBreportModel.Distributer" Role="Distributer" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bGomlaDBreportModelStoreContainer" CdmEntityContainer="bGomlaDBreportEntities">
+          <EntitySetMapping Name="AccessAccounts">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.AccessAccount">
+              <MappingFragment StoreEntitySet="AccessAccounts">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="AccountPassword" ColumnName="AccountPassword" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccessAccountsTypes">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.AccessAccountsType">
+              <MappingFragment StoreEntitySet="AccessAccountsTypes">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articals">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.Artical">
+              <MappingFragment StoreEntitySet="Articals">
+                <ScalarProperty Name="Fillters" ColumnName="Fillters" />
+                <ScalarProperty Name="ArticalName" ColumnName="ArticalName" />
+                <ScalarProperty Name="PublicationID" ColumnName="PublicationID" />
+                <ScalarProperty Name="ArticallD" ColumnName="ArticallD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BackupLogs">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.BackupLog">
+              <MappingFragment StoreEntitySet="BackupLogs">
+                <ScalarProperty Name="FileExists" ColumnName="FileExists" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="SrvBkId" ColumnName="SrvBkId" />
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BackupTypes">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.BackupType">
+              <MappingFragment StoreEntitySet="BackupTypes">
+                <ScalarProperty Name="FilesExtintion" ColumnName="FilesExtintion" />
+                <ScalarProperty Name="typeName" ColumnName="typeName" />
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.Branch">
+              <MappingFragment StoreEntitySet="Branches">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BranchTypes">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.BranchType">
+              <MappingFragment StoreEntitySet="BranchTypes">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataBaseFiles">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.DataBaseFile">
+              <MappingFragment StoreEntitySet="DataBaseFiles">
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="DbServerID" ColumnName="DbServerID" />
+                <ScalarProperty Name="FileNameID" ColumnName="FileNameID" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataBaseFilesNames">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.DataBaseFilesName">
+              <MappingFragment StoreEntitySet="DataBaseFilesNames">
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataBaseFilesSizes">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.DataBaseFilesSize">
+              <MappingFragment StoreEntitySet="DataBaseFilesSizes">
+                <ScalarProperty Name="DateTaken" ColumnName="DateTaken" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+                <ScalarProperty Name="SizeID" ColumnName="SizeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataBaseServers">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.DataBaseServer">
+              <MappingFragment StoreEntitySet="DataBaseServers">
+                <ScalarProperty Name="NetworkAccountID" ColumnName="NetworkAccountID" />
+                <ScalarProperty Name="DataBaseAccountID" ColumnName="DataBaseAccountID" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="DataBasePartionFreeSpace" ColumnName="DataBasePartionFreeSpace" />
+                <ScalarProperty Name="DataBaseName" ColumnName="DataBaseName" />
+                <ScalarProperty Name="ServerID" ColumnName="ServerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distributers">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.Distributer">
+              <MappingFragment StoreEntitySet="Distributers">
+                <ScalarProperty Name="PublicationID" ColumnName="PublicationID" />
+                <ScalarProperty Name="ServerID" ColumnName="ServerID" />
+                <ScalarProperty Name="DistributerID" ColumnName="DistributerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Machines">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.Machine">
+              <MappingFragment StoreEntitySet="Machines">
+                <ScalarProperty Name="MachineIP" ColumnName="MachineIP" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publications">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.Publication">
+              <MappingFragment StoreEntitySet="Publications">
+                <ScalarProperty Name="BranchTypeID" ColumnName="BranchTypeID" />
+                <ScalarProperty Name="PublicationName" ColumnName="PublicationName" />
+                <ScalarProperty Name="PublicationID" ColumnName="PublicationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServerBackups">
+            <EntityTypeMapping TypeName="bGomlaDBreportModel.ServerBackup">
+              <MappingFragment StoreEntitySet="ServerBackups">
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="intervalMin" ColumnName="intervalMin" />
+                <ScalarProperty Name="BackupTypeID" ColumnName="BackupTypeID" />
+                <ScalarProperty Name="DbServerID" ColumnName="DbServerID" />
+                <ScalarProperty Name="SrvBkID" ColumnName="SrvBkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Subscripers" TypeName="bGomlaDBreportModel.Subscripers" StoreEntitySet="Subscripers">
+            <EndProperty Name="Distributer">
+              <ScalarProperty Name="DistributerID" ColumnName="DistributerID" />
+            </EndProperty>
+            <EndProperty Name="DataBaseServer">
+              <ScalarProperty Name="ServerID" ColumnName="SubscriberServerID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

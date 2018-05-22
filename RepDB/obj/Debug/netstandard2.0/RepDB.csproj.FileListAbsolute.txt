@@ -1,0 +1,9 @@
+C:\Users\Magdi\source\repos\Rep2\RepDB\bin\Debug\netstandard2.0\RepDB.deps.json
+C:\Users\Magdi\source\repos\Rep2\RepDB\bin\Debug\netstandard2.0\RepDB.dll
+C:\Users\Magdi\source\repos\Rep2\RepDB\bin\Debug\netstandard2.0\RepDB.pdb
+C:\Users\Magdi\source\repos\Rep2\RepDB\obj\Debug\netstandard2.0\RepDB.csprojResolveAssemblyReference.cache
+C:\Users\Magdi\source\repos\Rep2\RepDB\obj\Debug\netstandard2.0\RepDB.csproj.CoreCompileInputs.cache
+C:\Users\Magdi\source\repos\Rep2\RepDB\obj\Debug\netstandard2.0\RepDB.AssemblyInfoInputs.cache
+C:\Users\Magdi\source\repos\Rep2\RepDB\obj\Debug\netstandard2.0\RepDB.AssemblyInfo.cs
+C:\Users\Magdi\source\repos\Rep2\RepDB\obj\Debug\netstandard2.0\RepDB.dll
+C:\Users\Magdi\source\repos\Rep2\RepDB\obj\Debug\netstandard2.0\RepDB.pdb

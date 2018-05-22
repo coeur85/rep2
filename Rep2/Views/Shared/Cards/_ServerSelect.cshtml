@@ -1,0 +1,36 @@
+﻿
+@model IEnumerable<ClassCollection.ServerSelect>
+
+
+<table class="table table-striped table-bordered datatable" cellspacing="0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Subscriped</th>
+
+            <th>Server Branch</th>
+            <th>Server Name</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.DataBaseServer.Branch.Code
+                </td>
+                <td>
+                    @Html.CheckBox("IsSubscriped", item.IsSubscriped, new { subSrvID = item.DataBaseServer.ServerID })
+                </td>
+                <td>
+                    @item.DataBaseServer.Branch.BranchName
+                </td>
+                <td>
+                    @item.DataBaseServer.Machine.MachineName
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

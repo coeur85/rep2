@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Rep2.Models.EntityModel.BranchType>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout/_MainMaster.cshtml";
+}
+
+
+<div class="row">
+
+
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstOrDefault().TypeID, "Publication Server Type", htmlAttributes: new { @class = "control-label col-md-12" })
+                    @Html.DropDownList("BranchTypes", null, htmlAttributes: new { @class = "form-control"})
+                </div>
+                <div class="form-group">
+                    <label for="dd_publications" class="control-label"></label>
+                    <select id="dd_publications" class="form-control"></select>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body" id="dislist">
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript">
+
+    $('#BranchTypes').val(null);
+    var controller = 'ReplicationMangerAPI';
+
+    $('#BranchTypes').on('change', function ()
+    {
+
+        var prm = { 'id': $(this).val() };
+
+        ajaxPost(controller, 'getPublication', prm , function (data)
+        {
+
+            console.log(JSON.stringify(data))
+
+            bindSelect('#dd_publications', data, 'PublicationID', 'PublicationName');
+
+        },
+            function (x,y,z) { });
+
+
+
+    });
+
+    $('#dd_publications').on('change', function ()
+    {
+
+        ajaxGet(controller, 'getDistbuter/' + $(this).val(), null, function (data)
+        {
+
+            $('#dislist').html(data);
+
+
+        }, function (x, y, x) { });
+
+
+
+    });
+  
+
+
+
+
+
+
+
+</script>

@@ -1,0 +1,81 @@
+﻿
+@model List<Rep2.Models.EntityModel.ServerBackup>
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/_Layout/_MainMaster.cshtml";
+}
+
+<br />
+
+<div class="card">
+
+    @if (Model.FirstOrDefault() != null)
+    {
+        <div class="card-header">
+            @Html.ActionLink("Create New Plane", "AddPlan", new { id = Model.FirstOrDefault().DbServerID }, new { @class = "btn btn-secondary" })
+        </div>
+    }
+ 
+
+    <div class="card-body">
+
+        @if (Model.Count > 0)
+        {
+        <table  class="table table-striped table-bordered datatable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                       Branch
+                    </th>
+                    <th>
+                        Server name
+                    </th>
+                    <th>
+                       Backup type
+                    </th>
+                    <th>
+                        Files on desk
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataBaseServer.Branch.BranchName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataBaseServer.Machine.MachineName)
+                        </td>
+                        <td>
+                            @item.BackupType.typeName
+                        </td>
+                        <td>
+                            @item.BackupLogs.Count Files
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.SrvBkID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.SrvBkID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.SrvBkID })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+
+        else
+        {
+
+            <h4>No backup planes for this server</h4>
+
+        }
+    </div>
+   
+
+
+</div>

@@ -1,0 +1,37 @@
+﻿@model Rep2.Models.EntityModel.Branch
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout/_MainMaster.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Branch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BranchType.TypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BranchType.TypeName)
+        </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BranchID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

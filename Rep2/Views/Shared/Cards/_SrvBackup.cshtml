@@ -1,0 +1,144 @@
+﻿
+
+@model Rep2.Models.EntityModel.DataBaseServer
+
+@{ var pger = false; }
+<div class="card">
+    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_@Model.ServerID" aria-expanded="true" aria-controls="collapseOne">
+        <div class="card-header" id="heading_@Model.ServerID">
+
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="pull-left">
+                        <strong class="text-success" id="m_@Model.ServerID">
+                            @Model.Machine.MachineName
+                        </strong>
+                    </div>
+
+                </div>
+                
+                <div class="pull-right text-success" id="icon_@Model.ServerID">
+                    <i class="mdi mdi-check-circle-outline"></i>
+                </div>
+            </div>
+
+        </div>
+    </button>
+
+    <div id="collapse_@Model.ServerID" class="collapse" aria-labelledby="heading_@Model.ServerID" data-parent="#accordion">
+
+
+        <div class="card-body">
+
+            <div class="form-group">
+                <h4>Datbase</h4>
+                @*@Html.LabelFor(model => model.TypeID, "Type", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                    @Html.DropDownList("TypeID", null, htmlAttributes: new { @class = "form-control", @required = "required" })
+                    <label class="control-label col-md-12">Datbase</label>*@
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <strong>Name:</strong><label class="form-control">@Model.DataBaseName</label>
+                    </div>
+                    <div class="col-md-6">
+                        <strong>Size:</strong><label class="form-control">@Model.DabaseSizeMB MB</label>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+            <div class="form-group">
+                <h4>Backups</h4>
+                <table class="table-striped col-md-12">
+                    @*<thead>
+                            <tr>
+                                <th><b>Type</b></th>
+                                <th>From</th>
+                                <th>last taken</th>
+
+
+                            </tr>
+                        </thead>*@
+                    <tbody>
+                        @foreach (var item in Model.ServerBackups.OrderBy(x=> x.BackupTypeID))
+                    {
+                            <tr>
+                                @if (item.LastFile != null)
+                            {
+                                    <td>
+
+                                        <a href="@Url.Action("Details","ServerBackup", new { id= item.SrvBkID })">
+                                            <b>
+                                                @item.BackupType.typeName
+                                            </b>
+                                        </a>
+
+                                    </td>
+                                    <td>@item.LastFile.DateCreated.ToShortDateString()</td>
+                                    <td>@item.LastFile.DateCreated.ToShortTimeString()</td>
+
+                                    <td>
+                                        @if (item.LastFile.DateCreated.AddMinutes(item.intervalMin) >= DateTime.Now)
+                                {
+                                            <div class="text-success">
+                                                <i class="mdi mdi-check-circle-outline"></i>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            pger = true;
+                                            <div class="text-danger">
+                                                <i class="mdi mdi-alert-circle" data-toggle="tooltip" data-placement="top"
+                                                   title="@Rep2._app.UI.Ago(item.LastFile.DateCreated.AddMinutes(item.intervalMin)) behind schedule"></i>
+                                            </div>
+                                }
+
+
+                                    </td>
+
+
+                            }
+                            else
+                            {
+                                pger = true;
+                                    <td>
+                                        <strong class="text-danger">
+                                            @item.BackupType.typeName
+                                        </strong>
+                                    </td>
+
+                                    <td colspan="3"><strong class="text-danger">Not Found</strong></td>
+
+
+                            }
+                            </tr>
+                    }
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+        <script type="text/javascript">
+
+
+        $(document).ready(function () {
+            var pger = '@pger.ToString().ToLower()' ;
+
+            if (pger == 'true')
+            {
+                $('#m_@Model.ServerID').removeClass('text-success').addClass('text-danger');
+                $('#collapse_@Model.ServerID').addClass('show');
+                $('#icon_@Model.ServerID').html('<i class="mdi mdi-alert-circle" />').removeClass('text-success').addClass('text-danger')
+
+            }
+        });
+
+
+
+        </script>
+
+    </div>

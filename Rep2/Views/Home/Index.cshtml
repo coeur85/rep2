@@ -1,0 +1,36 @@
+﻿
+@model IEnumerable<Rep2.Models.EntityModel.DataBaseServer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout/_MainMaster.cshtml";
+}
+
+<br />
+<hr />
+
+<div class="row" id="accordion">
+  
+
+   
+        @foreach (var item in Model)
+        {
+
+
+            
+
+
+
+                <div class="col-md-4 " style="    padding-top: 20px">
+
+                    @Html.Partial("~/Views/Shared/Cards/_SrvBackup.cshtml", item)
+                </div>
+           
+        }
+    </div>
+
+   
+
+
+
+

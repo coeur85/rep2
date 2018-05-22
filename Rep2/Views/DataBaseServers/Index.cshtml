@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Rep2.Models.EntityModel.DataBaseServer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout/_MainMaster.cshtml";
+}
+
+
+
+
+<h2>All DataBase Servers</h2>
+
+
+
+<div class="card">
+
+    <div class="card-header">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-secondary" })
+    </div>
+
+
+    <div class="card-body">
+
+
+        <table class="table table-striped table-bordered datatable" cellspacing="0">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Branch</td>
+                    <td>Server Name</td>
+                    <td>Server IP</td>
+                    <td>Database Name</td>
+                    <td>Database Size</td>
+                    
+                    <th>Backup Plans</th>
+
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@item.ServerID</td>
+                    <td>@item.Branch.BranchName</td>
+                    <td>@item.Machine.MachineName</td>
+                    <td>@item.Machine.MachineIP</td>
+                    <td>@item.DataBaseName</td>
+                    <td>@item.DabaseSizeMB MB</td>
+                   
+                    <td>
+                        @if (item.ServerBackups.Count == 0) { <strong class="text-danger">No backup plans were found</strong> }
+                        else
+                        {
+                            foreach (var sb in item.ServerBackups)
+                            {
+                                <strong>
+                                    @sb.BackupType.typeName
+                                </strong>
+                                <br />
+                            }
+
+                        }
+
+                        
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ServerID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ServerID }) |
+                        @Html.ActionLink("Add plan", "AddPlan", "ServerBackup", new { id = item.ServerID },null)
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

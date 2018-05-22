@@ -1,0 +1,55 @@
+﻿@model Rep2.Models.EntityModel.Publication
+
+
+
+
+
+@if (Model.Distributers.Count > 0)
+{
+
+
+<label>Distributers</label>
+
+<table class="table table-striped table-bordered datatable" cellspacing="0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>##</th>
+
+            <th>Server Branch</th>
+            <th>Server Name</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Distributers)
+        {
+            <tr>
+                <td>
+                    @item.DistributerServer.Branch.Code
+                </td>
+                <td>
+                    @Html.RadioButton("IsSubscriped", false, new { subSrvID = item.ServerID, name = "dis" })
+                </td>
+                <td>
+                    @item.DistributerServer.Branch.BranchName
+                </td>
+                <td>
+                    @item.DistributerServer.Machine.MachineName
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+
+else {<h4>No Distributers aviable for @Model.PublicationName</h4> }
+<hr />
+
+
+<div class="col-md-offset-2 col-md-2">
+    @Html.ActionLink("Add Publisher for "  + Model.PublicationName, "Add", null, new { @class = "btn btn-danger", id = Model.PublicationID  })
+</div>
+
+
+

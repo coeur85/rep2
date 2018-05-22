@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Themesdesign" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App Icons -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" />
+
+    <!--Morris Chart CSS -->
+    @*<link rel="stylesheet" href="./assets/plugins/morris/morris.css" />*@
+
+    <!-- App css -->
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  
+
+    <!-- jQuery  -->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <script src="~/assets/js/popper.min.js"></script>
+    <script src="~/assets/js/bootstrap.min.js"></script>
+    <script src="~/assets/js/modernizr.min.js"></script>
+    <script src="~/assets/js/waves.js"></script>
+    <script src="~/assets/js/jquery.slimscroll.js"></script>
+    <script src="~/assets/js/jquery.nicescroll.js"></script>
+    <script src="~/assets/js/jquery.scrollTo.min.js"></script>
+
+    <script src="~/assets/plugins/parsleyjs/parsley.min.js"></script>
+
+    <script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+   
+    <script src="~/assets/pages/datatables.init.js"></script>
+    <script src="~/assets/js/app.js"></script>
+    <style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        @Html.Partial("~/Views/Shared/_Layout/_NavigationBar.cshtml")
+        <div class="wrapper">
+            <hr />
+            <div class="container-fluid">
+
+                @RenderBody()
+                </div>
+            </div>
+
+            </div>
+
+          
+
+            <!--Morris Chart-->
+            @*<script src="~/assets/plugins/morris/morris.min.js"></script>
+                <script src="~/assets/plugins/raphael/raphael-min.js"></script>*@
+
+            @*<script src="~/assets/pages/dashborad.js"></script>*@
+
+            <!-- App js -->
+            <script src="~/assets/js/app.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('form').parsley();
+        });
+    </script>
+
+
+
+
+
+</body>
+</html>

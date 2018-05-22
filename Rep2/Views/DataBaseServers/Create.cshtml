@@ -1,0 +1,39 @@
+﻿@model Rep2.Models.EntityModel.DataBaseServer
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout/_MainMaster.cshtml";
+    ViewBag.formMode = "create";
+}
+
+<h2>Create new datbase server</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+
+    <div class="card">
+        <div class="card-body">
+         
+            @Html.EditorForModel()
+
+        </div>
+
+        <div class="card-footer">
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-2">
+                    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-danger" })
+                </div>
+                <div class="col-md-offset-2 col-md-2">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+}

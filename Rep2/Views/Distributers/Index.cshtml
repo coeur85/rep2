@@ -1,0 +1,58 @@
+﻿@model Rep2._app.UI.Pgaes.DistributerPage
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout/_MainMaster.cshtml";
+}
+
+<div class="card">
+
+
+    @Html.HiddenFor(x => x.Publication.PublicationID)
+
+
+    <div class="card-header">
+        <div class="pull-left">
+            <h4>All subscripers for publication :<strong class="text-success">@Model.Publication.PublicationName</strong> </h4>
+        </div>
+        
+    </div>
+
+
+    <div class="card-body">
+        
+        
+        @Html.Partial("~/Views/Shared/Cards/_ServerSelect.cshtml", Model.Distributers)
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+    $("input[name='IsSubscriped']").on('click', function () {
+        var subSrvID = $(this).attr("subSrvID");
+        var isChecked = $(this).is(":checked");
+        var pubid = $("#Publication_PublicationID").val();
+        console.log(pubid);
+        console.log(subSrvID);
+        console.log(isChecked);
+
+
+        var param = { 'PublicationID': pubid, 'ServerID': subSrvID, 'IsSubscriped': isChecked };
+
+
+        ajaxPost('WebAccess', 'UpdateDistributers', param, function (data)
+        {
+
+            console.log(JSON.stringify(data));
+
+        }, function (x, y, z) { console.log(x); })
+
+
+
+});
+
+
+
+</script>

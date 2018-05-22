@@ -1,0 +1,52 @@
+﻿@model List<Rep2.Models.EntityModel.DataBaseFile>
+
+
+<div class="form-group">
+
+    <div class="row"  >
+
+        @if (ViewBag.formMode == "create" || ViewBag.formMode == "edit")
+        {
+
+
+
+
+            foreach (var item in Model)
+            {
+
+                <div class="col-md-4">
+
+                    <input type="hidden" id="filepath_id_@item.DataBaseFilesName.FileName" />
+                   <label for="filepath_lable_@item.DataBaseFilesName.FileName" class="control-label col-md-12">
+                      @item.DataBaseFilesName.FileName file path: 
+                   </label>
+                    <input type="text" class="form-control col-md-12" required placeholder="@item.DataBaseFilesName.FileName"
+                         name="filepath_@item.DataBaseFilesName.FileName" id="filepath_@item.DataBaseFilesName.FileName" value="@item.FilePath"  />
+                  
+                   
+                </div>
+
+            }
+
+
+
+
+
+            
+        }
+
+        else
+        {
+            foreach (var item in Model)
+            {
+                Html.HiddenFor(x => item.FileID);
+
+                Html.LabelFor(x => item.DataBaseFilesName.FileName, htmlAttributes: new { @class = "control-label col-md-2" });
+                Html.EditorFor(model => item.FilePath, new { htmlAttributes = new { @class = "form-control col-md-4", @readOnly = "readOnly" } });
+
+            }
+
+
+        }
+    </div>
+</div>

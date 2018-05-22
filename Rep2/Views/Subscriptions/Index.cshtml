@@ -1,0 +1,90 @@
+﻿@model Rep2._app.UI.Pgaes.DistributerPage
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout/_MainMaster.cshtml";
+}
+
+
+
+<div class="card">
+
+    
+    @Html.HiddenFor(x=> x.Publication.PublicationID)
+
+
+    <div class="card-header">
+        <div class="pull-left">
+            <h4>All subscripers for publication :<strong class="text-success">@Model.Publication.PublicationName</strong> </h4>
+            </div>
+            <div class="pull-right">
+
+                @Model.Publication.PublicationsServer.Machine.MachineName
+
+            </div>
+        </div>
+
+
+    <div class="card-body">
+        <table class="table table-striped table-bordered datatable" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Subscriped</th>
+                   
+                    <th>Server Branch</th>
+                    <th>Server Name</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Subscriptions)
+                {
+                    <tr>
+                        <td>
+                            @item.DataBaseServer.Branch.Code
+                        </td>
+                        <td>
+                            @Html.CheckBox("IsSubscriped", item.IsSubscriped, new { subSrvID = item.DataBaseServer.ServerID })
+                        </td>
+                        <td>
+                            @item.DataBaseServer.Branch.BranchName
+                        </td>
+                        <td>
+                            @item.DataBaseServer.Machine.MachineName
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+    $("input[name='IsSubscriped']").on('click', function () {
+        var subSrvID = $(this).attr("subSrvID");
+        var isChecked = $(this).is(":checked");
+        var pubid = $("#Publication_PublicationID").val();
+        console.log(pubid);
+        console.log(subSrvID);
+        console.log(isChecked);
+
+
+        var param = { 'PublicationID': pubid, 'ServerID': subSrvID, 'IsSubscriped': isChecked };
+
+
+        ajaxPost('SubScribtions', 'UpdateSupscriptions', param, function (data)
+        {
+
+            console.log(1);
+
+        }, function (x, y, z) { console.log(x); })
+
+
+        
+});    
+
+
+
+</script>

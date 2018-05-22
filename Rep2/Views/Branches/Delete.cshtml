@@ -1,0 +1,54 @@
+﻿@model Rep2.Models.EntityModel.Branch
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout/_MainMaster.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete @Model.BranchName ?</h3>
+@Html.HiddenFor(x => x.BranchID)
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="card">
+
+
+    <div class="card-body">
+        <h4>@Model.BranchName</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.BranchName, "Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.BranchName, new { htmlAttributes = new { @class = "form-control", @required = "required", @readOnly = "readOnly" } })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypeID, "Type", htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.BranchType.TypeName, new { htmlAttributes = new { @class = "form-control", @required = "required", @readOnly = "readOnly" } })
+
+
+        </div>
+
+
+    </div>
+
+    <div class="card-footer">
+        <div class="row">
+
+            <div class="col-md-offset-2 col-md-2">
+                @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-danger" })
+            </div>
+            <div class="col-md-offset-2 col-md-2">
+                <input type="submit" value="Delete" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+</div>
+}
